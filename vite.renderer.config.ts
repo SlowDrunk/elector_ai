@@ -13,7 +13,7 @@ export default defineConfig(async () => {
       tailwindcss(),
       autoImport({
         imports: ['vue', 'vue-router', 'pinia', 'vue-i18n', '@vueuse/core'],
-        dts: 'renderer/auto-imports.d.ts'
+        dts: 'render/auto-imports.d.ts'
       })
     ],
     css: {
@@ -34,7 +34,7 @@ export default defineConfig(async () => {
       alias: {
         '@common': resolve(__dirname, 'common'),
         '@main': resolve(__dirname, 'main'),
-        '@renderer': resolve(__dirname, 'renderer'),
+        '@render': resolve(__dirname, 'render'),
         '@locals': resolve(__dirname, 'locals'),
       }
     }

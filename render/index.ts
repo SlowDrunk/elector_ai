@@ -27,7 +27,10 @@ import './index.css';
 import { createApp } from 'vue';
 import App from '../render/App.vue';
 import i18n from './i18n';
+// 使用相对路径导入 utils 目录下的错误处理插件
+import errorHandler from './utils/errorHandler';
 
 createApp(App)
-.use(i18n)
-.mount('#app');
+  .use(await i18n)
+  .use(errorHandler)
+  .mount('#app');

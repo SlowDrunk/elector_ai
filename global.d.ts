@@ -23,6 +23,13 @@ interface WindowApi {
      * @returns 返回一个 Promise，解析为窗口是否最大化
      */
     isWindowMaximized: () => Promise<boolean>;
+
+    logger:{
+        debug: (message: string, ...meta: any[]) => void;
+        info: (message: string, ...meta: any[]) => void;
+        warn: (message: string, ...meta: any[]) => void;
+        error: (message: string, ...meta: any[]) => void;
+    }
 }
 
 /**

@@ -1,12 +1,21 @@
 import { app, BrowserWindow } from 'electron';
 import started from 'electron-squirrel-startup';
 import { setupWindows } from './wins';
+import logManager from './service/LogService';
 
 // 处理 Windows 安装/卸载时创建/删除快捷方式的情况
 if (started) {
   app.quit();
 }
+// 捕获未捕获的异常(同步)
+process.on('uncaughtException', (error) => {
+  logManager.error('Uncaught exception:', error);
+});
 
+// 捕获未捕获的拒绝(异步)
+process.on('unhandledRejection', (reason, promise) => {
+  logManager.error('Unhandled rejection:', reason, promise);
+});
 // 当 Electron 完成初始化并准备好创建浏览器窗口时，将调用此方法
 // 某些 API 只能在此事件发生后使用
 app.whenReady().then(() => {

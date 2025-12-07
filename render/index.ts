@@ -23,7 +23,9 @@
  * ```
  */
 
-import './index.css';
+import './styles/index.css';
+import 'vfonts/Lato.css';
+
 import { createApp } from 'vue';
 import App from '../render/App.vue';
 import i18n from './i18n';

@@ -17,7 +17,6 @@ const isMac = platform.includes('mac') || platform.includes('darwin');
 
 // 定义 props，不设置默认值，以便区分用户是否明确传入
 const props = defineProps<TitleBarProps>();
-console.log(props)
 
 // 如果是 macOS 系统，默认不展示窗口控制按钮
 // 使用计算属性处理默认逻辑：如果用户未传入值，在 macOS 上默认不显示，在非 macOS 上默认显示

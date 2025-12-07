@@ -10,7 +10,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <title-bar>
+  <title-bar class="main-content">
     <drag-region class="w-full" />
   </title-bar>
   <n-config-provider class="h-full w-[100vw] flex text-tx-primary">
@@ -22,8 +22,7 @@ onMounted(() => {
         </div>
       </div>
     </aside>
-    <div class="flex-auto">
-
+    <div class="flex-auto main-content">
       Main
     </div>
   </n-config-provider>
@@ -32,6 +31,10 @@ onMounted(() => {
 <style scoped>
 .sidebar {
   background-color: var(--bg-color);
-  box-shadow: -3px -2px 10px rgba(101, 101, 101, 0.2);
+  /* box-shadow: -3px -2px 10px rgba(101, 101, 101, 0.2); */
+}
+
+.main-content {
+  background-color: var(--bg-color);
 }
 </style>

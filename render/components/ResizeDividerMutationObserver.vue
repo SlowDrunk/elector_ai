@@ -1,30 +1,4 @@
 <script setup lang="ts">
-import logger from '@render/utils/logger';
-
-/**
- * 可调整大小的分割器组件（使用 MutationObserver 实现）
- * 
- * 功能：
- * - 支持水平和垂直方向的拖拽调整
- * - 可设置最小和最大尺寸限制
- * - 支持负值方向计算（通过 valIsNagetive 属性控制拖拽方向）
- * - 使用 v-model:size 进行双向绑定
- * - 使用 MutationObserver 监听 DOM 属性变化来实现响应式更新
- * 
- * 实现原理：
- * 1. 使用鼠标事件捕获拖拽操作
- * 2. 通过修改分割器元素的 data-* 属性来记录拖拽位置
- * 3. 使用 MutationObserver 监听这些属性的变化
- * 4. 当属性变化时，计算新尺寸并触发更新事件
- * 
- * 使用示例：
- * ResizeDividerMutationObserver 
- *   direction="horizontal" 
- *   v-model:size="panelHeight"
- *   :max-size="800" 
- *   :min-size="200"
- */
-
 interface Props {
   /** 调整方向：'horizontal' 为水平方向（上下拖拽调整高度），'vertical' 为垂直方向（左右拖拽调整宽度） */
   direction: 'horizontal' | 'vertical';

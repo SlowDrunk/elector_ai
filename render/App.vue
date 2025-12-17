@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { NConfigProvider } from 'naive-ui';
-import TitleBar from '@render/components/TitleBar.vue';
-import DragRegion from '@render/components/DragRegion.vue';
 import NavBar from '@render/components/NavBar.vue';
 import ResizeDividerMutationObserver from './components/ResizeDividerMutationObserver.vue';
+import ConversationList from './components/ConversationList/index.vue';
 const sidebarWidth = ref(320);
 
 onMounted(() => {
@@ -15,17 +14,16 @@ onMounted(() => {
     <drag-region class="w-full" />
   </title-bar>
   <n-config-provider class="h-full w-[100vw] flex text-tx-primary">
-    <aside class="sidebar h-full flex flex-shrink-0 flex-col" :style="{width:`${sidebarWidth}px`}">
+    <aside class="sidebar h-full flex flex-shrink-0 flex-col" :style="{ width: `${sidebarWidth}px` }">
       <div class="flex-auto flex">
         <nav-bar />
-        <div class="flex-auto">
-          conversation-list
-        </div>
+        <conversation-list />
       </div>
     </aside>
-    <resize-divider-mutation-observer direction="vertical" v-model:size="sidebarWidth" :max-size="800" :min-size="320" />
+    <resize-divider-mutation-observer direction="vertical" v-model:size="sidebarWidth" :max-size="800"
+      :min-size="320" />
     <div class="flex-auto main-content">
-      Main
+      <router-view />
     </div>
   </n-config-provider>
 </template>

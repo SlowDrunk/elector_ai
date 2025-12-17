@@ -6,7 +6,7 @@ class ThemeService {
     private static _instance: ThemeService;
     private _isDark: boolean = nativeTheme.shouldUseDarkColors;
     constructor() {
-        const themeMode = 'light';
+        const themeMode = 'system';
         if (themeMode) {
             nativeTheme.themeSource = themeMode;
             this._isDark = nativeTheme.shouldUseDarkColors;

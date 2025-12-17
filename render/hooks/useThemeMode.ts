@@ -11,7 +11,7 @@ const tooltipMap = new Map([
 ])
 
 export function useThemeMode() {
-  const themeMode = ref<ThemeMode>('dark');
+  const themeMode = ref<ThemeMode>('system');
   const isDark = ref<boolean>(false);
   const { t } = useI18n()
 

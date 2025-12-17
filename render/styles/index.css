@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import "./theme/index.css";
+@import "tailwindcss";
 
 * {
   user-select: none;

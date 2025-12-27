@@ -6,13 +6,14 @@ import { IPC_EVENTS } from "@common/constants";
 import logManager from "./LogService";
 // 深拷贝工具函数
 import { cloneDeep } from "@common/utils";
+import { createTranslator } from "@main/utils";
 
 /**
  * 翻译函数，用于将菜单标签进行国际化处理
  * @param value 待翻译的字符串
  * @returns 翻译后的字符串（当前为直接返回原值）
  */
-let t = (value: string | undefined) => value;
+let t: ReturnType<typeof createTranslator> = createTranslator();
 
 /**
  * 菜单服务类
@@ -23,7 +24,7 @@ class MenuService {
   /** 单例实例 */
   private static _instance: MenuService;
   /** 菜单模板映射表，key 为菜单 ID，value 为菜单项配置数组 */
-  private _menutemplate: Map<string, MenuItemConstructorOptions[]> = new Map();
+  private _menutemplates: Map<string, MenuItemConstructorOptions[]> = new Map();
   /** 当前显示的菜单实例 */
   private _currentMenu?: Menu = void 0;
 
@@ -78,7 +79,7 @@ class MenuService {
    * @returns 返回注册的菜单 ID
    */
   public register(menuId: string, template: MenuItemConstructorOptions[]) {
-    this._menutemplate.set(menuId, template);
+    this._menutemplates.set(menuId, template);
     return menuId;
   }
 
@@ -97,7 +98,7 @@ class MenuService {
     if (this._currentMenu) return;
 
     // 深拷贝菜单模板，避免修改原始模板
-    const template = cloneDeep(this._menutemplate.get(menuId));
+    const template = cloneDeep(this._menutemplates.get(menuId));
 
     // 如果菜单不存在，记录警告并执行关闭回调
     if (!template) {
@@ -206,7 +207,7 @@ class MenuService {
    * @param menuId 要销毁的菜单 ID
    */
   public distroyMenu(menuId: string) {
-    this._menutemplate.delete(menuId);
+    this._menutemplates.delete(menuId);
   }
 
   /**
@@ -214,7 +215,7 @@ class MenuService {
    * 清除所有已注册的菜单模板和当前显示的菜单
    */
   public distroyed() {
-    this._menutemplate.clear();
+    this._menutemplates.clear();
     this._currentMenu = void 0;
   }
 }

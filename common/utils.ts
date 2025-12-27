@@ -64,7 +64,7 @@ export function debounce<T extends (...args: any[]) => any>(fn: T, delay: number
     if (obj instanceof Map) {
       const clonedMap = new Map();
       obj.forEach((value, key) => {
-        clonedMap.set(deepClone(key), deepClone(value));
+        clonedMap.set(cloneDeep(key), cloneDeep(value));
       });
       return clonedMap as T;
     }
@@ -73,21 +73,21 @@ export function debounce<T extends (...args: any[]) => any>(fn: T, delay: number
     if (obj instanceof Set) {
       const clonedSet = new Set();
       obj.forEach((value) => {
-        clonedSet.add(deepClone(value));
+        clonedSet.add(cloneDeep(value));
       });
       return clonedSet as T;
     }
 
     // 处理数组
     if (Array.isArray(obj)) {
-      return obj.map(item => deepClone(item)) as T;
+      return obj.map(item => cloneDeep(item)) as T;
     }
 
     // 处理普通对象
     const clonedObj = {} as T;
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        clonedObj[key] = deepClone(obj[key]);
+        clonedObj[key] = cloneDeep(obj[key]);
       }
     }
 

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { NInput, NInputGroup, NInputGroupLabel, NIcon } from 'naive-ui'
 import { Icon as IconifyIcon } from '@iconify/vue';
+import { useContextMenu } from './useContextMenu'
 import { useFilter } from './useFilter';
 defineOptions({ name: 'SearchBar' });
 
 const { searchKey } = useFilter();
 const { t } = useI18n();
+const { handle: handleListContextMenu } = useContextMenu();
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const { t } = useI18n();
           <iconify-icon icon="material-symbols:search" />
         </template>
       </n-input>
-      <n-input-group-label class="cursor-pointer flex justify-between items-center">
+      <n-input-group-label class="cursor-pointer flex justify-between items-center" @click="handleListContextMenu">
         <n-icon>
           <iconify-icon icon="material-symbols:menu" />
         </n-icon>

@@ -2,9 +2,17 @@ import type { OpenAISetting } from './types';
 import { encode, decode } from 'js-base64';
 /**
  * 防抖函数
- * @param fn 需要执行的函数
- * @param delay 延迟时间（毫秒）
- * @returns 防抖处理后的函数
+ * 在指定延迟时间内，如果函数被多次调用，只执行最后一次调用
+ * @param fn - 需要执行的函数
+ * @param delay - 延迟时间（毫秒）
+ * @returns 防抖处理后的函数，调用该函数会在延迟后执行原函数
+ * @example
+ * ```ts
+ * const debouncedFn = debounce((value: string) => {
+ *   console.log(value);
+ * }, 300);
+ * debouncedFn('hello'); // 300ms 后输出 'hello'
+ * ```
  */
 export function debounce<T extends (...args: any[]) => any>(fn: T, delay: number): (...args: Parameters<T>) => void {
   let timer: NodeJS.Timeout | null = null;

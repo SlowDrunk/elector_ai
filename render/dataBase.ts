@@ -5,7 +5,7 @@ import { logger } from './utils/logger';
 
 export const providers: Provider[] = [
   {
-    id: 2,
+    id: 1,
     name: 'deepseek',
     title: '深度求索 (DeepSeek)',
     models: ['deepseek-chat'],

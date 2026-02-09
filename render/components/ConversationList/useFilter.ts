@@ -1,4 +1,4 @@
-import { useConversationsStore } from '@render/stores/conversatons';
+import { useConversationsStore } from '@render/stores/conversations'
 
 const searchKey = ref('');
 export function useFilter() {

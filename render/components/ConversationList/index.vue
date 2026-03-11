@@ -3,7 +3,7 @@ import { useFilter } from './useFilter';
 import { CTX_KEY } from './constants';
 
 import { useContextMenu } from './useContextMenu';
-import { useConversationsStore } from '@render/stores/conversatons';
+import { useConversationsStore } from '@render/stores/conversations'
 
 import SearchBar from './SearchBar.vue';
 import ListItem from './ListItem.vue';

@@ -1,6 +1,6 @@
 import { MENU_IDS, CONVERSATION_LIST_MENU_IDS } from '@common/constants';
 import { createContextMenu } from '@render/utils/contextMenu';
-import { useConversationsStore } from '@render/stores/conversatons';
+import { useConversationsStore } from '@render/stores/conversations'
 
 const SortByIdMap = new Map([
   ['createAt', CONVERSATION_LIST_MENU_IDS.SORT_BY_CREATE_TIME],

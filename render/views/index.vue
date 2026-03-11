@@ -19,14 +19,28 @@ async function handleCreateConversation(create: (title: string) => Promise<numbe
 </script>
 <template>
   <div class="main-view h-full w-full flex flex-col">
-    <main class="flex-auto">
-      <!-- <router-view /> -->
-      <!-- main -->
-      <create-conversation :providerId="providerId" :selectedModel="selectedModel" v-slot="{ create }">
+    <main class="flex-1 flex flex-col overflow-hidden">
+      <!-- 上方内容区域（预留给对话列表等），可滚动 -->
+      <section class="flex-1 overflow-y-auto">
+        <!-- <router-view /> -->
+        <!-- main -->
+      </section>
 
-        <message-input v-model:message="message" v-model:provider="provider"
-          :placeholder="t('main.conversation.placeholder')" @send="handleCreateConversation(create, message)" />
-      </create-conversation>
+      <!-- 底部输入区域，固定在视图内部 -->
+      <section class="shrink-0 px-4 pb-4 pt-2">
+        <create-conversation
+          :providerId="providerId"
+          :selectedModel="selectedModel"
+          v-slot="{ create }"
+        >
+          <message-input
+            v-model:message="message"
+            v-model:provider="provider"
+            :placeholder="t('main.conversation.placeholder')"
+            @send="handleCreateConversation(create, message)"
+          />
+        </create-conversation>
+      </section>
     </main>
   </div>
 </template>
